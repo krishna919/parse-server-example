@@ -20,6 +20,7 @@ var api = new ParseServer({
   clientKey: process.env.CLIENT_KEY || '',
   restAPIKey: process.env.REST_KEY || '',
   javascriptKey: process.env.JAVASCRIPT_KEY || '',
+  webhookKey: process.env.WEBHOOK_KEY || '',
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }

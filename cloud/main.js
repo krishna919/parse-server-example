@@ -4,5 +4,15 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 Parse.Cloud.define('hellohi', function(req, res) {
-  res.success('Hiii');
+  //res.success('Hiii');
+  
+  Parse.Cloud.httpRequest({
+    url: 'http://laravel.notevault.com/notevault/sample.php'
+  }).then(function(httpResponse) {
+    res.success(httpResponse);
+  }, function(httpResponse) {
+    res.error('Request failed with response code ' + httpResponse.status);
+  });
+  
 });
+

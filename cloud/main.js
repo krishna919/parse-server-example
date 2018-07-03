@@ -9,7 +9,7 @@ Parse.Cloud.define('hellohi', function(req, res) {
   Parse.Cloud.httpRequest({
     url: 'http://laravel.notevault.com/notevault/sample.php'
   }).then(function(httpResponse) {
-    res.success(httpResponse.result.data);
+    res.success(httpResponse.result);
   }, function(httpResponse) {
     res.error('Request failed with response code ' + httpResponse.status);
   });

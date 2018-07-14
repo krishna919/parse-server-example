@@ -23,7 +23,7 @@ Parse.Cloud.job('SendDailyReport', function(request, response) {
   });
 });
 
-Parse.Cloud.job('SendDailyReport', function(request, response) {
+Parse.Cloud.job('SendDailyReportFailed', function(request, response) {
   response.error({
     status: 'Daily Report Sent failed'
   });

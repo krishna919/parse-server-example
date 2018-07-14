@@ -16,3 +16,10 @@ Parse.Cloud.define('hellohi', function(req, res) {
   
 });
 
+//Cloud job
+Parse.Cloud.job('SendDailyReport', function(request, response) {
+  response.success({
+    status: 'Daily Report Sent to all successfully'
+  });
+});
+

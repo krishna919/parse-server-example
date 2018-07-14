@@ -20,7 +20,7 @@ Parse.Cloud.define('hellohi', function(req, res) {
 Parse.Cloud.job('SendDailyReport', function(request, response) {
   
   Parse.Cloud.httpRequest({
-    url: 'http://laravel.notevault.com/notevault/sample.php'
+    url: 'http://laravel.notevault.com/notevault/senddailyreport.php'
   }).then(function(httpResponse) {
     response.success(httpResponse.data);
   }, function(httpResponse) {

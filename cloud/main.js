@@ -18,9 +18,18 @@ Parse.Cloud.define('hellohi', function(req, res) {
 
 //Cloud job
 Parse.Cloud.job('SendDailyReport', function(request, response) {
-  response.success({
-    status: 'Daily Report Sent to all successfully'
+  
+  Parse.Cloud.httpRequest({
+    url: 'http://laravel.notevault.com/notevault/sample.php'
+  }).then(function(httpResponse) {
+    response.success(httpResponse.data);
+  }, function(httpResponse) {
+    response.error('Request failed with response code ' + httpResponse.status);
   });
+  
+  //response.success({
+   // status: 'Daily Report Sent to all successfully'
+ // });
 });
 
 Parse.Cloud.job('SendDailyReportFailed', function(request, response) {

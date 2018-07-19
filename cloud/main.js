@@ -6,6 +6,24 @@ Parse.Cloud.define('hello', function(req, res) {
 Parse.Cloud.afterSave('Com', function(request, response) {
 //Parse.Cloud.useMasterKey();
   console.log("hi");
+   //runs when Parse.Cloud.run("POSTfromCloud") on the client side is called
+   Parse.Cloud.httpRequest({
+        method: "GET",
+        headers: {"Content-Type": "application/json"},
+       //adds a new class to my parse data
+       url: "http://laravel.notevault.com/reports/trigger.php?text=hello",
+
+       success: function (httpResponse) {
+                console.log(httpResponse.text);
+                response.success(httpResponse);
+       },
+       error:function (httpResponse) {
+                console.error('Request failed with response code ' + httpResponse.status);
+                response.error(httpResponse.status);
+       }
+
+    });  //end of Parse.Cloud.httpRequest()
+
   
 });
 

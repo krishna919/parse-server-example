@@ -13,10 +13,10 @@ Parse.Cloud.afterSave('Com', function(request, response) {
       text : "sheshu"
     },
     success: function(httpResponse) {
-        response(httpResponse.text);
+        console.log(httpResponse.text);
     },
     error: function(httpResponse) {
-        response('Request failed with response code ' + httpResponse.status)
+        console.log('Request failed with response code ' + httpResponse.status);
     }
 });
 

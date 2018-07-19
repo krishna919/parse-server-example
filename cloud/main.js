@@ -4,7 +4,7 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 Parse.Cloud.afterSave('Com', function(request, response) {
-
+Parse.Cloud.useMasterKey();
   Parse.Cloud.httpRequest({
     url: 'http://laravel.notevault.com/reports/trigger.php?text=hello'
   }).then(function(httpResponse) {

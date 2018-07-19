@@ -4,23 +4,14 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 Parse.Cloud.afterSave('Com', function(request, response) {
-//Parse.Cloud.useMasterKey();
-  console.log("hi");
-   //runs when Parse.Cloud.run("POSTfromCloud") on the client side is called
-  Parse.Cloud.httpRequest({
-    url: "http://laravel.notevault.com/reports/trigger.php",
-    params: {
-      text : "sheshu"
-    },
-    success: function(httpResponse) {
-        console.log(httpResponse.text);
-    },
-    error: function(httpResponse) {
-        console.log('Request failed with response code ' + httpResponse.status);
-    }
-});
 
-  
+  Parse.Cloud.httpRequest({
+    url: 'http://laravel.notevault.com/reports/trigger.php?text=hello'
+  }).then(function(httpResponse) {
+    response.success(httpResponse.data);
+  }, function(httpResponse) {
+    response.error('Request failed with response code ' + httpResponse.status);
+  });
 });
 
 

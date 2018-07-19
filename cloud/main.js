@@ -4,7 +4,7 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 
 Parse.Cloud.afterSave('Com', function(request, response) {
-Parse.Cloud.useMasterKey();
+//Parse.Cloud.useMasterKey();
   console.log("hi");
   
 });
